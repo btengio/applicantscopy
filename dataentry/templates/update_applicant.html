@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+{% block title %}Update | Page{% endblock %}
+
+{% load static tailwind_tags %}
+
+{% block content %}
+ <form action="" method="post" action="MainApplicant">
+  {% csrf_token %}
+  <div class="flex flex-col w-full">
+    
+    <div class="my-3 mx-6 rounded border border-slate-200 shadow-md ">
+      <div class="block bg-slate-400 rounded-t-sm  h-8 px-4 w-full text-lg text-white">1. Application Number &#35;</div>
+      <div class="flex w-full l md:mx-8 px-3 my-6">
+        <div class="bg-none">
+          <input type="text" placeholder="Enter application number here"
+            class=" rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="application_number" value="{{ MainApplicant.application_number }}">
+        </div>
+      </div>
+    </div>
+    <!-- Region choices starts here -->
+    <div class="my-3 mx-6 rounded border border-slate-200 shadow-md">
+      <div class="block bg-slate-400 rounded-t-sm  h-8 px-4 w-full text-lg text-white">2. Region</div>
+      <div class="flex w-full md:min-w-full md:mx-8 px-3 my-6">
+        <div class="bg-none">          
+          <div class="bg-none">
+            <input type="text" placeholder="Select region"
+              class="mt-2 mr-20 rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="region" list="regions">
+              <datalist id="regions">
+                <option value="Arusha">
+                <option value="Dar">
+                <option value="Dodoma">
+                <option value="Kigoma">
+                <option value="Kilimanjaro">
+                <option value="Mbeya">
+                <option value="Mwanza">
+                <option value="Online">
+                <option value="Zanzibar">
+              </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Name Div starts here -->
+    <div class="my-3 mx-6 rounded border border-slate-200 shadow-md">
+      <div class="block bg-slate-400 rounded-t-sm  h-8 px-4 w-full text-lg text-white">3. Name</div>
+      <div class="flex flex-wrap w-full gap-10  md:min-w-full md:mx-8 px-3 my-6">
+        <div class="bg-none">
+          <label for="" class="block">Family Name</label>
+          <input type="text" placeholder="Surname"
+            class="mt-2 mr-20 rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="family_name">
+        </div>
+        <div class="">
+          <label for="" class="block">First Name</label>
+          <input type="text" placeholder="e.g. John"
+            class="mt-2 mr-20 rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="first_name">
+        </div>
+        <div class="">
+          <label for="" class="block">Middle Name</label>
+          <input type="text" placeholder="e.g. Charlie" class="mt-2 rounded border border-gray-200 py-2 px-8 w-full" name="middle_name">
+        </div>
+      </div>
+    </div>
+    <!-- Gender Div starts here -->
+    <div class="my-3 mx-6 rounded border border-slate-200 shadow-md">
+      <div class="block bg-slate-400 rounded-t-sm  h-8 px-4 w-full text-lg text-white">4. Gender</div>
+      <div class="flex w-full md:min-w-full md:mx-8 px-3 my-6">
+        <div class="bg-none">
+          <div class="bg-none">
+            <input type="text" placeholder="Select gender"
+              class="mt-2 mr-20 rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="gender" list="gender">
+              <datalist id="gender">
+                <option value="MALE">
+                <option value="FEMALE">
+              </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- DOB starts here-->
+    <div class="my-3 mx-6 rounded border border-slate-200 shadow-md">
+      <div class="block bg-slate-400 rounded-t-sm  h-8 px-4 w-full text-lg text-white">5. Date of Birth</div>
+      <div class="flex w-full flex-wrap gap-10 md:min-w-full md:mx-8 px-3 my-6">
+        <div class="bg-none">
+          <label for="" class="block">Month</label>
+          <input type="text" placeholder="Select Month"
+            class=" rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="month_B">
+        </div>
+        <div class="">
+          <label for="" class="block">Day</label>
+          <input type="text" placeholder="Day" class=" rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="day_B">
+        </div>
+        <div class="">
+          <label for="" class="block">Year</label>
+          <input type="text" placeholder="Year" class="rounded border border-gray-200 py-2 px-8 w-full" name="year_B">
+        </div>
+      </div>
+    </div>
+    <!-- Birth Place starts here-->
+    <div class="my-3 mx-6 rounded border border-slate-200 shadow-md">
+      <div class="block bg-slate-400 rounded-t-sm  h-8 px-4 w-full text-lg text-white">6. Birth Place</div>
+        <div class="flex w-full flex-wrap gap-10 md:min-w-full md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            <label for="" class="block">City</label>
+            <input type="text" placeholder="Enter city"
+              class="rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="birth_city">
+          </div>
+          <div class="">
+            <label for="" class="block">Country</label>
+            <input type="text" placeholder="Enter Country of Birth"
+              class="rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="birth_country">
+          </div>
+          <div class="">
+            <label for="" class="block">Eligibility</label>
+            <input type="text" placeholder="Enter country of Eligibility"
+              class="rounded border border-gray-200 py-2 px-8 w-full" name="eligibility_country">
+          </div>
+      </div>
+    </div>
+    <!-- Contact details starts here -->
+    <div class="my-3 mx-6 rounded border border-slate-200 shadow-md">
+      <div class="block bg-slate-400 rounded-t-sm  h-8 px-4 w-full text-lg text-white">7. Contact Details</div>
+      <div class="flex w-full flex-wrap gap-10 md:min-w-full md:mx-8 px-3 my-6">
+        <div class="bg-none">
+          <label for="" class="block">Phone</label>
+          <input type="tel" placeholder="Whatsap &#35;"
+            class="rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="phone">
+        </div>
+        <div class="">
+          <label for="" class="block">Email</label>
+          <input type="email" placeholder="myemail@company.com"
+            class="rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="email">
+        </div>
+      </div>
+    </div>
+    <!-- Highest education starts here -->
+    <div class="my-3 mx-6 rounded border border-slate-200 shadow-md">
+      <div class="block bg-slate-400 rounded-t-sm  h-8 px-4 w-full text-lg text-white">8. Education</div>
+      <div class="flex w-full md:min-w-full md:mx-8 px-3 my-6">
+        <div class="bg-none">
+          <input type="text" placeholder="Highest Education"
+            class="rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="highest_education" list="education">
+            <datalist id="education">
+              <option value="PRIMARY SCH">
+              <option value="HIGH SCH NO DGR">
+              <option value="HIGH SCH DGR">
+              <option value="VOCATIONAL SCH">
+              <option value="SOME UNIVERSITY COURSES">
+              <option value="UNIVERSITY DEGREE">
+              <option value="SOME GRADUATE LEVEL COURSES">
+              <option value="MASTERS">
+              <option value="SOME DOCTORATE LEVEL COURSES">
+              <option value="DOCTORATE DEGREE">  
+            </datalist>
+        </div>
+      </div>
+    </div>
+    <!-- No of Children starts here -->
+    <div id="kidsBookingForm" class="my-3 mx-6 rounded border border-slate-200 shadow-md">
+      <div class="block bg-slate-400 rounded-t-sm  h-8 px-4 w-full text-lg text-white">9. Children</div>
+      <div class="flex w-full md:min-w-full md:mx-8 px-3 my-6">
+        <div class="bg-none">
+          <input  id="kidsInput" type="number" placeholder="Number of Children"
+            class="rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="no_of_children">
+        </div>
+      </div>
+      <div id="kidsForm" class="md:mx-6 px-3 hidden">
+        <h2 class="text-lg font-bold mt-4">Kids' Details</h2>
+        <!-- <label for="kidsInput" class="block mb-2">Number of Kids:</label> -->
+        <textarea id="kidsInput" class=" w-full border border-gray-300 px-2 py-1" ></textarea>
+        <!-- Add more inputs for kids' details here as needed -->
+      </div>
+    </div>
+
+    <!-- Marital status starts here -->
+    <div class="my-3 mx-6 rounded border border-slate-200 shadow-md">
+      <div class="block bg-slate-400 rounded-t-sm  h-8 px-4 w-full text-lg text-white">10. Marital Status</div>
+      <div class="flex w-full md:min-w-full md:mx-8 px-3 my-6">
+        <div class="bg-none">
+          <input type="text" placeholder="Select Marital Status"
+            class="rounded border border-gray-200 py-2 px-8 shadow-inner w-full" name="marital_status" list="marital">
+            <datalist id="marital">
+              <option value="SINGLE">
+              <option value="MARRIED">
+              <option value="DIVORCED">
+            </datalist>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+  <button class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700" type="submit" value="POST">Update</button>
+
+  
+ </form> 
+  
+
+
+{% endblock %}
+
+  <!-- <center>
+    <h1 class="font-gray-300">Add Applicant</h1>
+  </center> -->
+
+
