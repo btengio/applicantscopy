@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import MainApplicant
+from .models import MainApplicant, Children, Spouse
 
 # Create your views here.
 def homepage(request):
@@ -24,13 +24,46 @@ def dataentry(request):
             applicant.phone = request.POST.get('phone')
             applicant.email = request.POST.get('email')
             applicant.highest_education = request.POST.get('highest_education')
-            applicant.no_of_children = request.POST.get('no_of_children')
+            applicant.no_of_children = int(request.POST.get('no_of_children'))
+            if applicant.no_of_children >= 1:
+                if request.POST.get('dress_color') and request.POST.get('family_name') and request.POST.get('first_name') and request.POST.get('middle_name') and request.POST.get('gender') and request.POST.get('month_B') and request.POST.get('day_B') and request.POST.get('year_B') and request.POST.get('birth_city') and request.POST.get('birth_country'):
+                    child = Children()
+                    child.main_applicant = applicant.id #am failing to reference this FK in forms!!
+                    child.dress_color = request.POST.get('dress_color')
+                    child.family_name = request.POST.get('family_name')
+                    child.first_name = request.POST.get('first_name')
+                    child.middle_name = request.POST.get('middle_name')
+                    child.gender = request.POST.get('gender')
+                    child.month_B = request.POST.get('month_B')
+                    child.day_B = request.POST.get('day_B')
+                    child.year_B = request.POST.get('year_B')
+                    child.birth_city = request.POST.get('birth_city')
+                    child.birth_country = request.POST.get('birth_country')
+
             applicant.marital_status = request.POST.get('marital_status')
+            if applicant.marital_status == 'Marred':
+                if request.POST.get('family_name') and request.POST.get('first_name') and request.POST.get('middle_name') and request.POST.get('gender') and request.POST.get('month_B') and request.POST.get('day_B') and request.POST.get('year_B') and request.POST.get('birth_city') and request.POST.get('birth_country'):
+                    spouse = Spouse()
+                    spouse.main_applicant = applicant.id #am failing to reference this FK in forms!!
+                    spouse.family_name = request.POST.get('family_name')
+                    spouse.first_name = request.POST.get('first_name')
+                    spouse.middle_name = request.POST.get('middle_name')
+                    spouse.gender = request.POST.get('gender')
+                    spouse.month_B = request.POST.get('month_B')
+                    spouse.day_B = request.POST.get('day_B')
+                    spouse.year_B = request.POST.get('year_B')
+                    spouse.birth_city = request.POST.get('birth_city')
+                    spouse.birth_country = request.POST.get('birth_country')
+
+            child.save()
+            spouse.save()
             applicant.save()
 
             return render(request, 'dataentry.html')
     else:
         return render(request, 'dataentry.html')
+
+
 
 def applicants(request):
     all_applicants = MainApplicant.objects.all()
@@ -45,8 +78,6 @@ def delete_applicants(request, id):
     applicant = MainApplicant.objects.get(id=id)
     applicant.delete()
     return redirect('applicants')
-
-
 
 def login(request):
     return render(request, 'loginpage.html')
