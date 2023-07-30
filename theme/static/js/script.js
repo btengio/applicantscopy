@@ -11,16 +11,16 @@ kidsInput.addEventListener("input", function () {
   }
 });
 
-const spouseInput = document.querySelector("spouseInput")
+const spouseInput = document.getElementById("spouseInput")
 const spouseForm = document.getElementById("spouseForm")
+// const inputSpouse = document.getElementById("spouseInput");
 
-spouseInput.addEventListener("change", function () {
-  const inputSpouse = document.querySelector("spouseInput");
-  if (inputSpouse === 'Married') {
+spouseInput.addEventListener("input", function () {
+const selectedValue = spouseInput.value.toLowerCase().trim();
+  if (selectedValue === 'married') {
     spouseForm.classList.remove("hidden");
   } else {
     spouseForm.classList.add("hidden")
   }
 })
 
-  
