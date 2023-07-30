@@ -60,7 +60,7 @@ class MainApplicant(models.Model):
     first_name = models.CharField(null=False, blank=False, max_length=255)
     middle_name = models.CharField(null=False, blank=False, max_length=255)
     gender = models.CharField(max_length=10, null=True)
-    month_B = models.PositiveIntegerField(max_length=255, null=True)
+    month_B = models.PositiveIntegerField(null=True)
     day_B = models.PositiveIntegerField(blank=False, null=True)
     year_B = models.PositiveIntegerField(blank=False, null=True)
     birth_city = models.CharField(max_length=255, null=True)
