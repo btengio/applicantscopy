@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>List of Items</h1>
+    <ul>
+        {% for item in items %}
+            <li>{{ item.name }}</li>
+            <!-- Add more fields as needed -->
+        {% endfor %}
+    </ul>
+    {% if is_paginated %}
+      <div class="pagination">
+          <span class="step-links">
+              {% if Applicant.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ Applicant.previous_page_number }}">previous</a>
+              {% endif %}
+              
+              <span class="current-page">
+                  Page {{ Applicant.number }} of {{ Applicant.paginator.num_pages }}.
+              </span>
+
+              {% if Applicant.has_next %}
+                  <a href="?page={{ Applicant.next_page_number }}">next</a>
+                  <a href="?page={{ Applicant.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+          </span>
+      </div>
+    {% endif %}
+
+{% endblock %}
+
+
+{% if is_paginated %}
+  <nav aria-label="Page navigation conatiner"></nav>
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li><a href="?page={{ page_obj.previous_page_number }}"
+ class="page-link">&laquo; PREV </a></li>
+    {% endif %}    {% if page_obj.has_next %}
+    <li><a href="?page={{ page_obj.next_page_number }}"
+ class="page-link"> NEXT &raquo;</a></li>
+    {% endif %}
+  </ul>
+  </nav></div>
+{% endif %}
+<!-- 
+<div class="flex">
+  <!-- Previous Button -->
+  <a href="#" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+    Previous
+  </a>
+
+  <!-- Next Button -->
+  <a href="#" class="flex items-center justify-center px-3 h-8 ml-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+    Next
+  </a>
+</div> -->

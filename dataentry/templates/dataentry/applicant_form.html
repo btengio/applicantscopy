@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block title %}Winners | Page{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% load static tailwind_tags %}
+
+{% block content %}
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="flex flex-col w-full">
+      <div class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md ">
+        <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">1. Application Number &#35;</div>
+        <div class="flex w-full l md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            {{ form.application_number|as_crispy_field }}
+            <!-- <input type="text" placeholder="Enter application number here"
+              class=" rounded border border-gray-200 py-2 px-8 shadow-inner w-full"> -->
+          </div>
+        </div>
+      </div>
+      <!-- Region choices starts here -->
+      <div class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md">
+        <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">2. Region</div>
+        <div class="flex w-full md:min-w-full md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            <div class="bg-none">
+              {{ form.region|as_crispy_field }}
+              <!-- <input type="text" placeholder="Select region"
+                class="mt-2 mr-20 rounded border border-gray-200 py-2 px-8 shadow-inner w-full"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Name Div starts here -->
+      <div class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md">
+        <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">3. Name</div>
+        <div class="flex flex-wrap w-full gap-10  md:min-w-full md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            {{ form.family_name|as_crispy_field }}
+            <!-- <input type="text" placeholder="Surname"
+              class="mt-2 mr-20 rounded border border-gray-200 py-2 px-8 shadow-inner w-full"> -->
+          </div>
+          <div class="">
+            {{ form.first_name|as_crispy_field }}
+          </div>
+          <div class="">
+            {{ form.middle_name|as_crispy_field }}
+          </div>
+        </div>
+      </div>
+      <!-- Gender Div starts here -->
+      <div class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md">
+        <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">4. Gender</div>
+        <div class="flex w-full md:min-w-full md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            <div class="bg-none">
+              {{ form.gender|as_crispy_field }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- DOB starts here-->
+      <div class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md">
+        <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">5. Date of Birth</div>
+        <div class="flex w-full flex-wrap gap-10 md:min-w-full md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            {{ form.month_B|as_crispy_field }}
+          </div>
+          <div class="">
+            {{ form.day_B|as_crispy_field }}
+          </div>
+          <div class="">
+            {{ form.year_B|as_crispy_field }}
+          </div>
+        </div>
+      </div>
+      <!-- Birth Place starts here-->
+      <div class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md">
+        <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">6. Birth Place</div>
+        <div class="flex w-full flex-wrap gap-10 md:min-w-full md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            {{ form.birth_city|as_crispy_field }}
+          </div>
+          <div class="">
+            {{ form.birth_country|as_crispy_field }}
+          </div>
+          <div class="">
+            {{ form.eligibility_country|as_crispy_field }}
+          </div>
+        </div>
+      </div>
+      <!-- Contact details starts here -->
+      <div class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md">
+        <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">7. Contact Details</div>
+        <div class="flex w-full flex-wrap gap-10 md:min-w-full md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            {{ form.phone|as_crispy_field }}
+          </div>
+          <div class="">
+            {{ form.email|as_crispy_field }}
+          </div>
+        </div>
+      </div>
+      <!-- Highest education starts here -->
+      <div class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md">
+        <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">8. Education</div>
+        <div class="flex w-full md:min-w-full md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            {{ form.highest_education|as_crispy_field }}
+          </div>
+        </div>
+      </div>
+      <!-- No of Children starts here -->
+      <div id="kidsBookingForm" class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md">
+        <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">9. Children</div>
+        <div class="flex w-full md:min-w-full md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            {{ form.no_of_children|as_crispy_field }}
+          </div>
+        </div>
+      </div>
+    
+      <!-- Marital status starts here -->
+      <div class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md">
+        <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">10. Marital Status</div>
+        <div class="flex w-full md:min-w-full md:mx-8 px-3 my-6">
+          <div class="bg-none">
+            {{ form.marital_status|as_crispy_field }}
+          </div>
+        </div>
+      </div>
+      <div class="my-3 mx-6">
+        <input type="submit" value="Submit Applicant" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+        <button class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><a href="{% url 'applicants' %}">Cancel</a></button>
+        
+      </div>
+    </div>
+  </form>
+
+<!-- <form action="" method="post">
+  {% csrf_token %}
+  <form class="flex flex-col w-full">
+    <div class="my-3 mx-6 rounded border border-cyan-200 dark:border-cyan-400 shadow-md ">
+      <div class="block bg-cyan-500 dark:bg-cyan-700 rounded-t-sm  h-8 px-4 w-full text-lg text-white">1. Application Number &#35;</div>
+      <div class="flex w-full l md:mx-8 px-3 my-6">
+        <div class="bg-none">
+          {{form.region}}
+        </div>
+      </div>
+    </div>
+  </form> -->
+{% endblock %}

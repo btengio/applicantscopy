@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Applicants{% endblock %}
+
+{% load static tailwind_tags %}
+
+{% block content %}
+
+<h1>Applicant: {{ applicant }}</h1>
+<p>Region: {{ applicant.region}}</p>
+<p>First Name: {{ applicant.first_name}}</p>
+<p>Application Number: {{ applicant.application_number}}</p>
+<p>Gender: {{ applicant.gender}}</p>
+
+
+
+<h1>Dependant details</h1>
+
+    {% for dependant in applicant.applicant_dependant.all %}
+
+      <h3>Dependant ID: {{ dependant.id }}</h3>
+      <p>Name: {{ dependant.family_name }} </p>
+    
+    {% empty %}
+      <p>There are no dependants for {{ applicant.family_name }}.</p>
+
+    {% endfor %}
+
+{% endblock %}

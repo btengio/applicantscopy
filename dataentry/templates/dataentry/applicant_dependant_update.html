@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Dependants | Page{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% load static tailwind_tags %}
+
+{% block content %}
+
+<div class="w-1/2 flex flex-col justify-center max-w-7xl mx-auto px-4">
+
+    <form action="" method="post" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field.errors }}
+        {{ hidden_field }}
+      {% endfor %}
+
+      {% csrf_token %}
+
+      {{ form.management_form }}
+      {{ form.non_form_errors }}
+
+      <h3>Update Applicant Dependant Information</h3>
+      {% for Dependant_form in form.forms %}
+        <hr>
+        <h5>
+          {% if Dependant_form.instance.id %}
+            Dependant: {{ Dependant_form.instance.family_name }}
+          {% else %}
+
+            {% if form.forms|length > 1 %}
+              
+              <h3 class="mb-4 text-l font-extrabold text-gray-900 dark:text-white md:text-l lg:text-xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Add another Dependant</span></h3>
+            
+            {% else %}
+              <h3 class="mb-4 text-l font-extrabold text-gray-900 dark:text-white md:text-l lg:text-xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Add Dependant</span></h3>
+            {% endif %}
+
+          {% endif %}
+        </h5>
+
+        {% for hidden_field in Dependant_form.hidden_fields %}
+          {{ hidden_field.errors }}
+        {% endfor %}
+        <!-- {{ Dependant_form.dress_or_shirt_color|as_crispy_field }} CAN STAND ALONE AND BE FORMATED IN DIV-->
+            <table >
+              {{ Dependant_form|crispy }}
+            </table>
+      {% endfor %}
+      <hr>
+        <p>
+          <button type="submit" value="Update Applicant" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2">Submit Dependant
+          </button>
+          <button type="button" class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"><a href="{% url 'applicants' %}">Cancel</a></button>
+
+        <!-- <a href="{% url 'applicants' %}">Cancel</a> -->
+        </p>
+
+
+    </form>
+</div>
+
+
+
+
+
+{% endblock %}

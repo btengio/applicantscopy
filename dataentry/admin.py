@@ -1,12 +1,16 @@
 from django.contrib import admin
-from .models import MainApplicant, Spouse, Children
+from .models import Applicant, Dependant
 
 # Register your models here.
-admin.site.register(Spouse)
-admin.site.register(Children)
 
-@admin.register(MainApplicant)
-class MainApplicantAdmin(admin.ModelAdmin):
-    list_display = MainApplicant.DisplayFields
-    search_fields = MainApplicant.SearchableFields
+@admin.register(Applicant)
+class ApplicantAdmin(admin.ModelAdmin):
+    list_display = Applicant.DisplayFields
+    search_fields = Applicant.SearchableFields
+    # list_filter = MainApplicant.FilterFields
+
+@admin.register(Dependant)
+class DependantAdmin(admin.ModelAdmin):
+    list_display = Dependant.DisplayFields
+    search_fields = Dependant.SearchableFields
     # list_filter = MainApplicant.FilterFields

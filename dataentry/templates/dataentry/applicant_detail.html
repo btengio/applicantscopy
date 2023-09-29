@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Applicants{% endblock %}
+
+{% load static tailwind_tags %}
+
+{% block content %}
+
+<h3 class="mb-4  ml-4 text-l font-extrabold text-gray-900 dark:text-white md:text-l lg:text-xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Applicant: {{applicant.application_number}}_{{applicant.family_name}}</span></h3>
+
+<p class="ml-4 mb-1">Family Name: <span class="font-bold">{{ applicant.family_name }}</span></p>
+<p class="ml-4 mb-1">First Name: <span class="font-bold">{{ applicant.first_name}}</span></p>
+<p class="ml-4 mb-1">Middle Name: <span class="font-bold">{{ applicant.middle_name}}</span></p>
+<p class="ml-4 mb-1">Gender: <span class="font-bold">{{ applicant.gender}}</span></p>
+<p class="ml-4 mb-1">Month of Birth: <span class="font-bold">{{ applicant.month_B}}</span></p>
+<p class="ml-4 mb-1">Day of Birth: <span class="font-bold">{{ applicant.day_B }}</span></p>
+<p class="ml-4 mb-1">Year of Birth: <span class="font-bold">{{ applicant.year_B }}</span></p>
+<p class="ml-4 mb-1">City of Birth: <span class="font-bold">{{ applicant.birth_city }}</span></p>
+<p class="ml-4 mb-1">Country of Birth: <span class="font-bold">{{ applicant.birth_country }}</span></p>
+<p class="ml-4 mb-1">Country of Eligibility: <span class="font-bold">{{ applicant.eligibility_country }}</span></p>
+<p class="ml-4 mb-1">Phone: <span class="font-bold">{{ applicant.phone }}</span></p>
+<p class="ml-4 mb-1">Email: <span class="font-bold">{{ applicant.email }}</span></p>
+<p class="ml-4 mb-1">Highest Education: <span class="font-bold">{{ applicant.highest_education }}</span></p>
+<p class="ml-4 mb-1">Number of Children: <span class="font-bold">{{ applicant.no_of_children }}</span></p>
+<p class="ml-4 mb-1">Marital Status: <span class="font-bold">{{ applicant.marital_status }}</span></p>
+
+
+    {% for dependant in applicant.applicant_dependant.all %}
+
+    <h3 class="mb-4 mt-4 ml-4 text-l font-extrabold text-gray-900 dark:text-white md:text-l lg:text-xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-pink-600 from-cyan-400">Dependant of : {{applicant.application_number}}_{{applicant.family_name}}</span></h3>
+
+      <p class="ml-4 mb-1">Family Name: <span class="font-bold">{{ dependant.family_name }}</span></p>
+      <p class="ml-4 mb-1">First Name: <span class="font-bold">{{ dependant.first_name}}</span></p>
+      <p class="ml-4 mb-1">Middle Name: <span class="font-bold">{{ dependant.middle_name}}</span></p>
+      <p class="ml-4 mb-1">Gender: <span class="font-bold">{{ dependant.gender}}</span></p>
+      <p class="ml-4 mb-1">Month of Birth: <span class="font-bold">{{ dependant.month_B}}</span></p>
+      <p class="ml-4 mb-1">Day of Birth: <span class="font-bold">{{ dependant.day_B }}</span></p>
+      <p class="ml-4 mb-1">Year of Birth: <span class="font-bold">{{ dependant.year_B }}</span></p>
+      <p class="ml-4 mb-1">City of Birth: <span class="font-bold">{{ dependant.birth_city }}</span></p>
+      <p class="ml-4 mb-1">Country of Birth: <span class="font-bold">{{ dependant.birth_country }}</span></p>
+      <p class="ml-4 mb-1">Dress of Shirt Color: <span class="font-bold">{{ dependant.dress_or_shirt_color }}</span></p>
+ 
+    {% empty %}
+
+     <h3 class="mb-4 mt-4 ml-4 text-l font-extrabold text-gray-900 dark:text-white md:text-l lg:text-xl"><span class="text-transparent bg-clip-text bg-gradient-to-r to-pink-600 from-cyan-400">Dependant of : {{applicant.application_number}}_{{applicant.family_name}}</span></h3>
+      
+      <p class="ml-4 color-red">There are no dependants for {{ applicant.family_name }}.</p>
+
+    {% endfor %}
+
+    <button class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2""><a  href="{% url 'applicant-pdf-detail' pk=applicant.pk %}">Download PDF</a></button>
+
+    <button class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2""><a  href="{% url 'applicants' %}">Back Home</a></button>
+    
+  
+{% endblock %}
+
+
+pip install Django-easy-pdf  && 
+pip install weasyprint
+
+
